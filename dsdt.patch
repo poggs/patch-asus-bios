@@ -1,0 +1,221 @@
+--- dsdt.dsl	2017-06-17 11:10:30.501554802 +0100
++++ dsdt.fixed	2017-06-17 11:11:17.414026267 +0100
+@@ -18,7 +18,7 @@
+  *     Compiler ID      "INTL"
+  *     Compiler Version 0x20051117 (537202967)
+  */
+-DefinitionBlock ("dsdt.aml", "DSDT", 2, "ALASKA", "A M I", 0x00000015)
++DefinitionBlock ("dsdt.aml", "DSDT", 2, "ALASKA", "A M I", 0x00000016)
+ {
+     /*
+      * iASL Warning: There were 6 external control methods found during
+@@ -2468,7 +2468,7 @@
+                 M1LN = ((M1MX - M1MN) + One)
+                 If ((OSYS <= 0x07D3))
+                 {
+-                    CreateDWordField (BUF0, \_SB.PCI0._Y0F._LEN, MSLN)  // _LEN: Length
++                    CreateQWordField (BUF0, \_SB.PCI0._Y0F._LEN, MSLN)  // _LEN: Length
+                     MSLN = Zero
+                 }
+                 ElseIf (E4GM)
+@@ -2491,7 +2491,7 @@
+                 }
+                 Else
+                 {
+-                    CreateDWordField (BUF0, \_SB.PCI0._Y0F._LEN, M4LN)  // _LEN: Length
++                    CreateQWordField (BUF0, \_SB.PCI0._Y0F._LEN, M4LN)  // _LEN: Length
+                     M4LN = Zero
+                 }
+ 
+@@ -2715,11 +2715,6 @@
+                 })
+                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+                 {
+-                    If (TPMF)
+-                    {
+-                        Return (Zero)
+-                    }
+-
+                     Return (CRS) /* \_SB_.PCI0.TPMX.CRS_ */
+                 }
+             }
+@@ -4641,7 +4636,7 @@
+                     })
+                     Device (WMI1)
+                     {
+-                        Name (_HID, "pnp0c14")  // _HID: Hardware ID
++                        Name (_HID, "PNP0C14")  // _HID: Hardware ID
+                         Name (_UID, "MXM2")  // _UID: Unique ID
+                         Name (_WDG, Buffer (0x14)
+                         {
+@@ -6155,7 +6150,7 @@
+                             Zero, 
+                             Zero
+                         })
+-                        Name (_PLD, ToPLD (
++                        Name (_PLD, Package() { ToPLD (
+                             PLD_Revision       = 0x1,
+                             PLD_IgnoreColor    = 0x1,
+                             PLD_Red            = 0x0,
+@@ -6181,7 +6176,7 @@
+                             PLD_Reference      = 0x0,
+                             PLD_Rotation       = 0x0,
+                             PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         Device (PR30)
+                         {
+                             Name (_ADR, One)  // _ADR: Address
+@@ -6192,7 +6187,7 @@
+                                 Zero, 
+                                 Zero
+                             })
+-                            Name (_PLD, ToPLD (
++                            Name (_PLD, Package() { ToPLD (
+                                 PLD_Revision       = 0x1,
+                                 PLD_IgnoreColor    = 0x1,
+                                 PLD_Red            = 0x0,
+@@ -6218,7 +6213,7 @@
+                                 PLD_Reference      = 0x0,
+                                 PLD_Rotation       = 0x0,
+                                 PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         }
+ 
+                         Device (PR31)
+@@ -6231,7 +6226,7 @@
+                                 Zero, 
+                                 Zero
+                             })
+-                            Name (_PLD, ToPLD (
++                            Name (_PLD, Package() { ToPLD (
+                                 PLD_Revision       = 0x1,
+                                 PLD_IgnoreColor    = 0x1,
+                                 PLD_Red            = 0x0,
+@@ -6257,7 +6252,7 @@
+                                 PLD_Reference      = 0x0,
+                                 PLD_Rotation       = 0x0,
+                                 PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         }
+ 
+                         Device (PR32)
+@@ -6270,7 +6265,7 @@
+                                 Zero, 
+                                 Zero
+                             })
+-                            Name (_PLD, ToPLD (
++                            Name (_PLD, Package() { ToPLD (
+                                 PLD_Revision       = 0x1,
+                                 PLD_IgnoreColor    = 0x1,
+                                 PLD_Red            = 0x0,
+@@ -6296,7 +6291,7 @@
+                                 PLD_Reference      = 0x0,
+                                 PLD_Rotation       = 0x0,
+                                 PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         }
+ 
+                         Device (PR33)
+@@ -6309,7 +6304,7 @@
+                                 Zero, 
+                                 Zero
+                             })
+-                            Name (_PLD, ToPLD (
++                            Name (_PLD, Package() { ToPLD (
+                                 PLD_Revision       = 0x1,
+                                 PLD_IgnoreColor    = 0x1,
+                                 PLD_Red            = 0x0,
+@@ -6335,7 +6330,7 @@
+                                 PLD_Reference      = 0x0,
+                                 PLD_Rotation       = 0x0,
+                                 PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         }
+ 
+                         Device (PR34)
+@@ -6348,7 +6343,7 @@
+                                 Zero, 
+                                 Zero
+                             })
+-                            Name (_PLD, ToPLD (
++                            Name (_PLD, Package() { ToPLD (
+                                 PLD_Revision       = 0x1,
+                                 PLD_IgnoreColor    = 0x1,
+                                 PLD_Red            = 0x0,
+@@ -6374,7 +6369,7 @@
+                                 PLD_Reference      = 0x0,
+                                 PLD_Rotation       = 0x0,
+                                 PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         }
+ 
+                         Device (PR35)
+@@ -6387,7 +6382,7 @@
+                                 Zero, 
+                                 Zero
+                             })
+-                            Name (_PLD, ToPLD (
++                            Name (_PLD, Package() { ToPLD (
+                                 PLD_Revision       = 0x1,
+                                 PLD_IgnoreColor    = 0x1,
+                                 PLD_Red            = 0x0,
+@@ -6413,7 +6408,7 @@
+                                 PLD_Reference      = 0x0,
+                                 PLD_Rotation       = 0x0,
+                                 PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         }
+ 
+                         Device (PR36)
+@@ -6426,7 +6421,7 @@
+                                 Zero, 
+                                 Zero
+                             })
+-                            Name (_PLD, ToPLD (
++                            Name (_PLD, Package() { ToPLD (
+                                 PLD_Revision       = 0x1,
+                                 PLD_IgnoreColor    = 0x1,
+                                 PLD_Red            = 0x0,
+@@ -6452,7 +6447,7 @@
+                                 PLD_Reference      = 0x0,
+                                 PLD_Rotation       = 0x0,
+                                 PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         }
+ 
+                         Device (PR37)
+@@ -6465,7 +6460,7 @@
+                                 Zero, 
+                                 Zero
+                             })
+-                            Name (_PLD, ToPLD (
++                            Name (_PLD, Package() { ToPLD (
+                                 PLD_Revision       = 0x1,
+                                 PLD_IgnoreColor    = 0x1,
+                                 PLD_Red            = 0x0,
+@@ -6491,7 +6486,7 @@
+                                 PLD_Reference      = 0x0,
+                                 PLD_Rotation       = 0x0,
+                                 PLD_Order          = 0x0)
+-)  // _PLD: Physical Location of Device
++})  // _PLD: Physical Location of Device
+                         }
+                     }
+                 }
+@@ -12693,7 +12688,7 @@
+ 
+     Device (_SB.PCI0.DOCK)
+     {
+-        Name (_HID, "ABCDEFGH")  // _HID: Hardware ID
++        Name (_HID, "00000000")  // _HID: Hardware ID
+         Name (_CID, EisaId ("PNP0C15") /* Docking Station */)  // _CID: Compatible ID
+         Name (_UID, 0x02)  // _UID: Unique ID
+         Method (_STA, 0, NotSerialized)  // _STA: Status
