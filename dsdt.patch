@@ -1,5 +1,5 @@
---- dsdt.dsl	2017-06-17 11:10:30.501554802 +0100
-+++ dsdt.fixed	2017-06-17 11:11:17.414026267 +0100
+--- dsdt.dsl	2017-06-17 11:47:21.331787810 +0100
++++ dsdt.fixed	2017-06-17 11:46:42.900279185 +0100
 @@ -18,7 +18,7 @@
   *     Compiler ID      "INTL"
   *     Compiler Version 0x20051117 (537202967)
@@ -9,24 +9,6 @@
  {
      /*
       * iASL Warning: There were 6 external control methods found during
-@@ -2468,7 +2468,7 @@
-                 M1LN = ((M1MX - M1MN) + One)
-                 If ((OSYS <= 0x07D3))
-                 {
--                    CreateDWordField (BUF0, \_SB.PCI0._Y0F._LEN, MSLN)  // _LEN: Length
-+                    CreateQWordField (BUF0, \_SB.PCI0._Y0F._LEN, MSLN)  // _LEN: Length
-                     MSLN = Zero
-                 }
-                 ElseIf (E4GM)
-@@ -2491,7 +2491,7 @@
-                 }
-                 Else
-                 {
--                    CreateDWordField (BUF0, \_SB.PCI0._Y0F._LEN, M4LN)  // _LEN: Length
-+                    CreateQWordField (BUF0, \_SB.PCI0._Y0F._LEN, M4LN)  // _LEN: Length
-                     M4LN = Zero
-                 }
- 
 @@ -2715,11 +2715,6 @@
                  })
                  Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
