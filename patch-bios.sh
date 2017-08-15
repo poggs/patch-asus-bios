@@ -19,7 +19,10 @@ iasl -e ssdt1.dat -e ssdt2.dat -e ssdt3.dat -e ssdt4.dat -e ssdt5.dat -e ssdt6.d
 
 echo "Patching"
 
-patch < dsdt.patch
+patch < patches/dsdt.patch
+patch < patches/return-zero.patch
+patch < patches/dword-qword.patch
+patch < patches/result-unused.patch
 
 echo "Recompiling"
 

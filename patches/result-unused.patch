@@ -1,0 +1,11 @@
+--- dsdt.dsl	2017-08-15 22:14:21.945970420 +0100
++++ dsdt.fixed	2017-08-15 22:14:44.905863908 +0100
+@@ -3683,7 +3683,7 @@
+                     Mutex (MUT0, 0x00)
+                     Method (ENFG, 1, NotSerialized)
+                     {
+-                        Acquire (MUT0, 0x0FFF)
++                        Acquire (MUT0, 0x0FFFF)
+                         INDX = 0x87
+                         INDX = 0x87
+                         LDN = Arg0

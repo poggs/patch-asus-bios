@@ -1,0 +1,20 @@
+--- dsdt.dsl	2017-08-15 22:09:08.871403999 +0100
++++ dsdt.fixed	2017-08-15 22:10:42.522979447 +0100
+@@ -2468,7 +2468,7 @@
+                 M1LN = ((M1MX - M1MN) + One)
+                 If ((OSYS <= 0x07D3))
+                 {
+-                    CreateDWordField (BUF0, \_SB.PCI0._Y0F._LEN, MSLN)  // _LEN: Length
++                    CreateQWordField (BUF0, \_SB.PCI0._Y0F._LEN, MSLN)  // _LEN: Length
+                     MSLN = Zero
+                 }
+                 ElseIf (E4GM)
+@@ -2491,7 +2491,7 @@
+                 }
+                 Else
+                 {
+-                    CreateDWordField (BUF0, \_SB.PCI0._Y0F._LEN, M4LN)  // _LEN: Length
++                    CreateQWordField (BUF0, \_SB.PCI0._Y0F._LEN, M4LN)  // _LEN: Length
+                     M4LN = Zero
+                 }
+ 
